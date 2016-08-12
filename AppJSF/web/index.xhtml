@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Relatório de Clientes</title>
+    </h:head>
+    <h:body>         
+        
+       <p:dataTable value="#{clienteBean.clientes}" var="cliente">
+            
+            <f:facet name="caption">Lista de Clientes</f:facet>
+            <f:facet name="header">Códigos e nomes</f:facet>
+            <f:facet name="footer">Fim da listagem</f:facet>
+            
+            <p:column>
+                <h:outputText value="#{cliente.id}" />
+            </p:column>
+
+            <p:column>
+                <h:outputText value="#{cliente.nome}" />
+            </p:column>
+
+            <p:column>
+                
+                
+                <h:link outcome="editar" value="Editar">
+                    <f:param value="#{cliente.id}" name="id" />
+                </h:link>
+                
+            </p:column>
+           <p:column>
+                               
+                <h:link outcome="deletar" value="Deletar">
+                    <f:param value="#{cliente.id}" name="id" />
+                </h:link>
+                
+            </p:column>
+                        
+            
+        </p:dataTable>         
+        
+        
+        <h:link outcome="clientes" value="Cadastrar novo" />
+        
+        
+    </h:body>
+</html>
+
